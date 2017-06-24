@@ -46,6 +46,21 @@ def update_location(request):
         return HttpResponse(e)
 
 
+def get_locations(request):
+    users = User.objects.all()
+    locations = set()
+
+    for a_user in users:
+        if not a_user.lattitude:
+            continue
+        location = (a_user.lattitude,
+                    a_user.longitude)
+        locations.add(location)
+
+    locations = list(locations)
+    return HttpResponse(json.dumps(locations))
+
+
 def get_users_in_location(request):
     request_info = request.GET
     users = User.objects.filter(lattitude=request_info['lattitude'],
