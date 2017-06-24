@@ -1,21 +1,28 @@
 'use strict';
 
 var appModule = angular.module('sample-app', [
-        'ngRoute'
+        'ngRoute',
+        'ngMaterial',
+        'ngMdIcons'
     ]);
 
 // app.constant('appConst', {
 //         PROJECT_MANAGER: 'Project Manager'
 //     });
 
-appModule.config(function($routeProvider, $locationProvider) {
+appModule.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
+     $mdThemingProvider.enableBrowserColor({
+      theme: 'myTheme', // Default is 'default'
+      palette: 'accent', // Default is 'primary', any basic material palette and extended palettes are available
+      hue: '200' // Default is '800'
+    });
+
+
     $locationProvider.hashPrefix('');
     $routeProvider
-    .when("/red", {
-        templateUrl : "modules/red/red.html",
-        controller: "redController"
+    .when("/", {
+        templateUrl : "modules/home/home.html",
+        controller: "homeCtrl"
     })
-    .when("/green", {
-        templateUrl : "modules/green/green.html"
-    });
+    
 });
