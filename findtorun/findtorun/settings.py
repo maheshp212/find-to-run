@@ -42,7 +42,7 @@ LOGGING = {
         }
     },
     'loggers': {
-        'findtorun': {
+        'find2run': {
             'handlers': ['console'],
             'level': log_level,
         },
