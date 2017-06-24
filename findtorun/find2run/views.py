@@ -13,11 +13,10 @@ logger = logging.getLogger(__name__)
 
 @csrf_exempt
 def signup(request):
-    if request.method == 'POST':
-        request_info = get_request_info(request)
-        logger.debug("The data received is %s", json.dumps(request_info))
-        User(**request_info).save()
-        return HttpResponse("User added")
+    request_info = get_request_info(request)
+    logger.debug("The data received is %s", json.dumps(request_info))
+    User(**request_info).save()
+    return HttpResponse("User added")
 
 
 def welcome(request):
@@ -26,17 +25,16 @@ def welcome(request):
 
 @csrf_exempt
 def update_location(request):
-    if request.method == 'POST':
-        request_info = get_request_info(request)
-        try:
-            a_user = User.objects.get(email=request_info['email'])
-            a_user.lattitude = request_info['lattitude']
-            a_user.longitude = request_info['longitude']
-            a_user.save()
-            return HttpResponse('Location updated')
-        except Exception as e:
-            logger.error(e, exc_info=True)
-            return HttpResponse(e)
+    request_info = get_request_info(request)
+    try:
+        a_user = User.objects.get(email=request_info['email'])
+        a_user.lattitude = request_info['lattitude']
+        a_user.longitude = request_info['longitude']
+        a_user.save()
+        return HttpResponse('Location updated')
+    except Exception as e:
+        logger.error(e, exc_info=True)
+        return HttpResponse(e)
 
 
 def get_users_in_location(request):
