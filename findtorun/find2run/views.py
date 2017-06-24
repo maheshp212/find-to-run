@@ -10,10 +10,12 @@ from find2run.models import User
 
 logger = logging.getLogger(__name__)
 
+
 @csrf_exempt
 def signup(request):
     if request.method == 'POST':
         request_info = get_request_info(request)
+        logger.debug("The data received is %s", json.dumps(request_info))
         User(**request_info).save()
         return HttpResponse("User added")
 
