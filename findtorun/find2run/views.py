@@ -35,4 +35,18 @@ def update_location(request):
         except Exception as e:
             logger.error(e, exc_info=True)
             return HttpResponse(e)
-        
+
+
+def get_users_in_location(request):
+    request_info = request.GET
+    users = User.objects.filter(lattitude=request_info['lattitude'],
+                                longitude=request_info['longitude'])
+    users_in_loc = []
+
+    for a_user in users:
+        user_dict = {}
+        user_dict['email'] = a_user.email
+        user_dict['first_name'] = a_user.first_name
+        user_dict['last_name'] = a_user.last_name
+        users_in_loc.append(user_dict)
+    return HttpResponse(json.dumps(users_in_loc))
