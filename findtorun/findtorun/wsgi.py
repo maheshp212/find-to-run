@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 import os
 import sys
 import site
-from django.core.wsgi import get_wsgi_application
 
 try:
     site.addsitedir('/home/ubuntu/envfind/lib/python3.5/site-packages')
@@ -23,5 +22,6 @@ except Exception as e:
     print(e)
     sys.exit(-1)
 
+from django.core.wsgi import get_wsgi_application
 
 application = get_wsgi_application()
