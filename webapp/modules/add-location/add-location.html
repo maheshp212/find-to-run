@@ -1,3 +1,18 @@
 <div>
 Hello add location Page
+
+    {{latlng}}
+
+17.3850° N, 78.4867° E
+    <ng-map id="map"
+    center='current-position'
+    geo-fallback-center="[17.385, 78.486]"
+    on-click="getpos($event)"
+    zoom="10"
+    >
+    	<marker position="{{latlng}}" title="Hello World!" on-dragend="getpos($event)" 
+        animation="Animation.BOUNCE" animation="DROP" draggable="true"></marker>
+
+    </ng-map>
+
  </div>

@@ -3,6 +3,7 @@
 var appModule = angular.module('sample-app', [
         'ngRoute',
         'ngMaterial',
+        'ngMap'
         
     ]);
 
