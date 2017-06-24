@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'ec2-54-193-111-20.us-west-1.compute.amazonaws.com',
     'localhost',
-    'findtorun.fun'
+    'api.findtorun.fun'
 ]
 
 
