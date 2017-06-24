@@ -8,7 +8,6 @@ body{
 }
 .extraspace{height: 50px;}
 .body{
-	/*background: #fff;*/
 	margin-left: auto;
 	margin-right: auto;
 	min-height: 700px;
@@ -27,3 +26,4 @@ body{
     font-weight: 900;
     font-style: italic;
 }
+md-content{background-color: #fff;}
