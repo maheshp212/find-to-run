@@ -1,5 +1,6 @@
  <md-content layout-padding>
- 	<form name="login" ng-submit="login()">
+ {{msg}}
+ 	<form name="login" ng-submit="logging()">
  		<div layout="row">
  			<md-input-container flex="100">
  				<label>Frist Name</label>
@@ -23,6 +24,15 @@
  				<label>Email</label>
  				<input required name="email" ng-model="project.email">
  				<div ng-messages="login.email.$error">
+ 					<div ng-message="required">This is required.</div>
+ 				</div>
+ 			</md-input-container>
+ 		</div>
+ 		<div layout="row">
+ 			<md-input-container flex="100">
+ 				<label>City</label>
+ 				<input required name="city" ng-model="project.city">
+ 				<div ng-messages="login.city.$error">
  					<div ng-message="required">This is required.</div>
  				</div>
  			</md-input-container>
