@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from find2run.views import signup
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^signup', signup),
 ]

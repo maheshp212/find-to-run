@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'find2run.apps.Find2RunConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
