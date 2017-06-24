@@ -25,11 +25,13 @@ def welcome(request):
 
 def login(request):
     request_info = request.GET
+    logger.debug("The request received is %s", json.dumps(request_info))
     if User.objects.filter(email=request_info['email']).exists():
         return HttpResponse('exists')
     else:
         return HttpResponse('DoesNotExist')
-    
+
+
 @csrf_exempt
 def update_location(request):
     request_info = request.GET
