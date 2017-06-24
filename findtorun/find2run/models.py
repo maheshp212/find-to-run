@@ -7,4 +7,7 @@ class User(models.Model):
                               primary_key=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
+    city = models.CharField(max_length=50,
+                            blank=True)
+    lattitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
