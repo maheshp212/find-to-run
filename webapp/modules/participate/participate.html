@@ -1,4 +1,32 @@
 <div>
-Hello Participatep Page
+Hello Participatep Pageasdf
  
+ <ng-map 
+ 	default-style="true"
+ 	center='current-position'
+    geo-fallback-center="[17.385, 78.486]"
+    zoom="10">
+      <marker id='{{shop.id}}' position="{{shop.position}}"
+        ng-repeat="shop in shops"
+        on-click="showDetail(shop)">
+      </marker>
+
+      <info-window id="foo-iw">
+        <div ng-non-bindable="">
+          id: {{shop.id}}<br/>
+          name: {{shop.name}}<br/>
+          Position 1: {{shop.position}}<br/>
+          Position 2: {{anchor.getPosition()}}<br/>
+          Position 3: {{map.markers[shop.id].getPosition()}}<br/>
+          <a href="#" ng-click="clicked()">Click Here</a>
+        </div>
+      </info-window>
+    </ng-map>
+<!-- 
+    <button ng-click="showDetail(e, shop)">
+      show InfoWindow of the shop
+    </button>
+    <button ng-click="hideDetail(e, shop)">
+      Hide InfoWindow of the shop
+    </button> -->
 </div>
