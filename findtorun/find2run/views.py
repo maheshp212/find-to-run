@@ -23,6 +23,13 @@ def welcome(request):
     return HttpResponse('Welcome to find2run')
 
 
+def login(request):
+    request_info = request.GET
+    if User.objects.filter(email=request_info['email']).exists():
+        return HttpResponse('exists')
+    else:
+        return HttpResponse('DoesNotExist')
+    
 @csrf_exempt
 def update_location(request):
     request_info = request.GET
