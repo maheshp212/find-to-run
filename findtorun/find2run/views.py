@@ -14,3 +14,7 @@ def signup(request):
         request_info = get_request_info(request)
         User(**request_info).save()
         return HttpResponse("User added")
+
+
+def welcome(request):
+    return HttpResponse('Welcome to find2run')
