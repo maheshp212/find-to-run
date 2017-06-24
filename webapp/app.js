@@ -1,7 +1,9 @@
 'use strict';
 
 var appModule = angular.module('sample-app', [
-        'ngRoute'
+        'ngRoute',
+        'ngMaterial',
+        
     ]);
 
 // app.constant('appConst', {
@@ -9,13 +11,12 @@ var appModule = angular.module('sample-app', [
 //     });
 
 appModule.config(function($routeProvider, $locationProvider) {
+
     $locationProvider.hashPrefix('');
     $routeProvider
-    .when("/red", {
-        templateUrl : "modules/red/red.html",
-        controller: "redController"
+    .when("/", {
+        templateUrl : "modules/home/home.html",
+        controller: "homeCtrl"
     })
-    .when("/green", {
-        templateUrl : "modules/green/green.html"
-    });
+    
 });
