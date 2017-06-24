@@ -19,7 +19,7 @@ from find2run.views import signup, welcome
 
 
 urlpatterns = [
-    url(r'', welcome),
+    url(r'^$', welcome),
     url(r'^admin/', admin.site.urls),
     url(r'^signup', signup),
 ]
