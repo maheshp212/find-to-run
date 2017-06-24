@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 @csrf_exempt
 def signup(request):
-    request_info = get_request_info(request)
+    request_info = request.GET
     logger.debug("The data received is %s", json.dumps(request_info))
     User(**request_info).save()
     return HttpResponse("User added")
@@ -25,7 +25,7 @@ def welcome(request):
 
 @csrf_exempt
 def update_location(request):
-    request_info = get_request_info(request)
+    request_info = request.GET
     try:
         a_user = User.objects.get(email=request_info['email'])
         a_user.lattitude = request_info['lattitude']
