@@ -18,7 +18,7 @@ appModule.controller('loginCtrl', function($scope, $location, $rootScope, $http,
 					);
 				return false;
 			}
-			$window.location.href = '#/add-location';
+			$window.location.href = '#/participate';
 		}, function(response) {
 			$scope.msg = response.statusText;
 		});
