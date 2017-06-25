@@ -49,14 +49,12 @@ def update_location(request):
 
 
 def get_locations(request):
-    users = User.objects.all()
+    location_obs = Location.objects.all()
     locations = set()
 
-    for a_user in users:
-        if not a_user.lattitude:
-            continue
-        location = (a_user.lattitude,
-                    a_user.longitude)
+    for a_location in location_obs:
+        location = (a_location.lattitude,
+                    a_location.longitude)
         locations.add(location)
 
     locations = list(locations)
