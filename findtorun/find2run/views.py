@@ -64,22 +64,22 @@ def get_locations(request):
 def get_users_in_location(request):
     request_info = request.GET
 
-    users_in_loc = {}
+    users_in_loc = []
     all_locations = Location.objects.filter(
         lattitude=request_info['lattitude'],
         longitude=request_info['longitude'])
 
     for a_location in all_locations:
         this_user = a_location.email.email
-        if this_user not in users_in_loc.keys():
-            users_in_loc[this_user] = {}
-            users_in_loc[this_user]['locations'] = []
-            all_user_locations = a_location.email.location_set.all()
+        if this_user not in users_in_loc:
+            users_in_loc.append(this_user)
+            # users_in_loc[this_user]['locations'] = []
+            # all_user_locations = a_location.email.location_set.all()
 
-            for a_user_loc in all_user_locations:
-                users_in_loc[this_user]['locations'].append(
-                    [a_user_loc.lattitude,
-                    a_user_loc.longitude])
+            # for a_user_loc in all_user_locations:
+            #     users_in_loc[this_user]['locations'].append(
+            #         [a_user_loc.lattitude,
+            #          a_user_loc.longitude])
         # this_loc = [a_location['lattitude'], a_location['longitude']]
         # all_locations.append(this_loc)
         
