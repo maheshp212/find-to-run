@@ -1,4 +1,23 @@
-<div>
-Hello Login Page
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap flex="80">
+ <md-content layout-padding>
+ 	<form name="login" ng-submit="logging()">
+ 	<div layout="row">
+ 	<h1 class="md-title">LOGIN </h1>
+ 	</div>
+ 		<div layout="row">
+ 			<md-input-container flex="100">
+ 				<label>Email</label>
+ 				<input required name="email" ng-model="email">
+ 				<div ng-messages="login.email.$error">
+ 					<div ng-message="required">This is required.</div>
+ 				</div>
+ 			</md-input-container>
+ 		</div>
+ 		<div  layout="row">
+ 			<md-button type="submit" class="md-raised md-primary">Login</md-button>
+ 		</div>
 
-</div>
+ 		<div class="label"> <a href="#/">click here</a> to Register</div>
+ 	</form>
+ </md-content>
+</section>

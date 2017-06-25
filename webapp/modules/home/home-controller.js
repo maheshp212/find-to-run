@@ -1,7 +1,7 @@
 'use strict';
 
-appModule.controller('homeCtrl', function($scope, $location, $http) {
-	$scope.logging = function () {
+appModule.controller('homeCtrl', function($scope, $location, $http, $window) {
+	$scope.signups = function () {
     	var url = 'http://api.findtorun.fun/signup';
       	var data = {
 		    "email": $scope.email,
@@ -9,15 +9,15 @@ appModule.controller('homeCtrl', function($scope, $location, $http) {
 		    "last_name": $scope.last_name,
 		    "city": $scope.city
 		};
-
-       	$http({
+     	$http({
            method : "GET",
            url : url,
            data: data
        }).then(function(response) {
            $scope.msg = response.data;
+           $window.location.href = '#/login';
        }, function(response) {
            $scope.msg = response.statusText;
        });
-  	}
+  	};
 });
