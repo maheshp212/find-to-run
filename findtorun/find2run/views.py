@@ -70,9 +70,13 @@ def get_users_in_location(request):
         longitude=request_info['longitude'])
 
     for a_location in all_locations:
-        this_user = a_location.email.email
+        this_user = a_location.email
         if this_user not in users_in_loc:
-            users_in_loc.append(this_user)
+            users_in_loc.append({
+                'email': this_user.email,
+                'first_name': this_user.first_name,
+                'last_name': this_user.last_name}
+            )
             # users_in_loc[this_user]['locations'] = []
             # all_user_locations = a_location.email.location_set.all()
 
