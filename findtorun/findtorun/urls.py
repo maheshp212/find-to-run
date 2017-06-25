@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from find2run.views import (signup, welcome,
+from find2run.views import (signup, welcome, login, get_locations,
                             update_location, get_users_in_location)
 
 
@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^$', welcome),
     url(r'^admin/', admin.site.urls),
     url(r'^get_users_in_location/', get_users_in_location),
+    url(r'^get_locations', get_locations),
+    url(r'^login', login),
     url(r'^signup', signup),
     url(r'^update_location', update_location),
 ]
