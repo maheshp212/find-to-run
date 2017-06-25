@@ -15,7 +15,10 @@ logger = logging.getLogger(__name__)
 def signup(request):
     request_info = request.GET
     logger.debug("The data received is %s", json.dumps(request_info))
-    User(email=request.GET['email']).save()
+    User(email=request.GET['email'],
+         first_name=request.GET['first_name'],
+         last_name=request.GET['last_name'],
+         city=request.GET['city']).save()
     return HttpResponse("User added")
 
 
