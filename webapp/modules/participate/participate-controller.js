@@ -22,18 +22,16 @@ appModule.controller('participateCtrl', function($scope, $location, NgMap,$http,
 	   	$scope.msg = response.statusText;
 	   });
 
-	$scope.shops = [
-	{id:'foo', name: 'Khajaguda', position:[17.4154,78.3455]},
-	{id:'bar', name: 'TCS', position:[17.4193,78.3433]}
-	];
+	
 	$scope.showDetail = function(e, shop) {
 		$scope.shop = shop;
+		$scope.latlng = shop.position;
 		$scope.map.showInfoWindow('foo-iw', shop.id);
 	};
 
 	$scope.clicked = function() {
-		var lattitude = 12.3455; //$scope.latlng[0].toFixed(3);
-		var longitude = 345.235; //$scope.latlng[1].toFixed(3);
+		var lattitude = $scope.latlng[0].toFixed(3);
+		var longitude = $scope.latlng[1].toFixed(3);
 		var url = 'http://api.findtorun.fun/get_users_in_location?lattitude=' + lattitude + '&longitude='+longitude;
 		$http({
 			method : "GET",
