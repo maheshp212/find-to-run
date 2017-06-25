@@ -1,46 +1,37 @@
 <div>
-    <section layout="row" layout-sm="column" layout-align="end right" layout-wrap>
-      <md-button class="md-raised md-warn" ng-href="#/add-location">Add Location</md-button>
-      <md-button class="md-raised md-warn" ng-href="#/">Logout</md-button>
+  <section layout="row" layout-sm="column" layout-align="end right" layout-wrap>
+    <md-button class="md-raised md-warn" ng-href="#/add-location">Add Location</md-button>
+    <md-button class="md-raised md-warn" ng-href="#/">Logout</md-button>
   </section>
   <h1 class="md-title">PICK A LOCATION </h1>
   <div class="label">Please select a location to get the Runners details</div>
   <div layout="row">
    <div flex=80>
      <ng-map default-style="true" center='current-position' geo-fallback-center="[17.385, 78.486]"      zoom="10" >
-     <marker id='{{shop.id}}' position="{{shop.position}}" ng-repeat="shop in shops"  on-click="showDetail(shop)"> </marker>
+       <marker id='{{shop.id}}' position="{{shop.position}}" ng-repeat="shop in shops"  on-click="showDetail(shop)"> </marker>
 
-   <info-window id="foo-iw">
-    <div ng-non-bindable="">
-      Latitude: {{shop.position}}<br/>
-      <md-button type="submit" class="md-raised md-primary" ng-click="clicked()">Check Runners</md-button>
-    </div>
-  </info-window>
-</ng-map>
-</div>
-<div ng-if="users" class='select_users' flex=20>
-  <md-content>
+       <info-window id="foo-iw">
+        <div ng-non-bindable="">
+          Latitude: {{shop.position}}<br/>
+          <md-button type="submit" class="md-raised md-primary" ng-click="clicked()">Check Runners</md-button>
+        </div>
+      </info-window>
+    </ng-map>
+  </div>
+  <div ng-if="users" class='select_users' flex=20>
+    <ul ng-repeat="user in users" ng-click="addUserToLocation($event, user)">
+      <li> {{user.first_name | uppercase}}  {{user.last_name | uppercase}} </li>
+    </ul>
+
+  <!-- <md-content>
       <md-list flex>
-        <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="addUserToLocation($event, user)">
+        <md-list-item class="md-3-line" >
           <div class="md-list-item-text" layout="column">
             <h3>{{user.first_name | uppercase}}  {{user.last_name | uppercase}}</h3>
           </div>
         </md-list-item>
       </md-list>
-    </md-content>
+    </md-content> -->
+  </div>
 </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-

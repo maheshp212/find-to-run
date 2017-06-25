@@ -6,7 +6,7 @@ appModule.controller('participateCtrl', function($scope, $location, NgMap,$http,
 		$scope.map = map;
 	});
 	$scope.isOpen = false;
-
+	$scope.emails = $rootScope.lemail
 	$scope.shops = [];
 	var url = 'http://api.findtorun.fun/get_locations';
 	$http({
@@ -56,7 +56,6 @@ appModule.controller('participateCtrl', function($scope, $location, NgMap,$http,
 		.cancel('Cancel');
 
 		$mdDialog.show(confirm).then(function() {
-			$scope.status = 'You decided to get rid of your debt.';
 			var email = $rootScope.lemail;
 			var lattitude = $scope.latlng[0].toFixed(3);
 			var longitude = $scope.latlng[1].toFixed(3);
@@ -78,6 +77,22 @@ appModule.controller('participateCtrl', function($scope, $location, NgMap,$http,
 			}, function(response) {
 				$scope.msg = response.statusText;
 			});
+
+
+			// recalling the api to refresh the data
+			// 
+			var lattitude = $scope.latlng[0].toFixed(3);
+		var longitude = $scope.latlng[1].toFixed(3);
+		var url = 'http://api.findtorun.fun/get_users_in_location?lattitude=' + lattitude + '&longitude='+longitude;
+		$http({
+			method : "GET",
+			url : url,
+		}).then(function(response) {
+			$scope.users = response.data;
+		}, function(response) {
+			$scope.msg = response.statusText;
+		});
+		return false;
 		}, function() {
 		});
 /*
