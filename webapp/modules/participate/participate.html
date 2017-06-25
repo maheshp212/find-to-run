@@ -1,32 +1,47 @@
 <div>
-Hello Participatep Pageasdf
- 
- <ng-map 
- 	default-style="true"
- 	center='current-position'
-    geo-fallback-center="[17.385, 78.486]"
-    zoom="10">
-      <marker id='{{shop.id}}' position="{{shop.position}}"
-        ng-repeat="shop in shops"
-        on-click="showDetail(shop)">
-      </marker>
+    <section layout="row" layout-sm="column" layout-align="end right" layout-wrap>
+      <md-button class="md-raised md-warn" ng-href="#/add-location">Add Location</md-button>
+      <md-button class="md-raised md-warn" ng-href="#/">Logout</md-button>
+  </section>
+  <h1 class="md-title">PICK A LOCATION </h1>
+  <div class="label">Please select a location to get the Runners details</div>
+  <div layout="row">
+   <div flex=80>
+     <ng-map default-style="true" center='current-position' geo-fallback-center="[17.385, 78.486]"      zoom="10" >
+     <marker id='{{shop.id}}' position="{{shop.position}}" ng-repeat="shop in shops"  on-click="showDetail(shop)"> </marker>
 
-      <info-window id="foo-iw">
-        <div ng-non-bindable="">
-          id: {{shop.id}}<br/>
-          name: {{shop.name}}<br/>
-          Position 1: {{shop.position}}<br/>
-          Position 2: {{anchor.getPosition()}}<br/>
-          Position 3: {{map.markers[shop.id].getPosition()}}<br/>
-          <a href="#" ng-click="clicked()">Click Here</a>
-        </div>
-      </info-window>
-    </ng-map>
-<!-- 
-    <button ng-click="showDetail(e, shop)">
-      show InfoWindow of the shop
-    </button>
-    <button ng-click="hideDetail(e, shop)">
-      Hide InfoWindow of the shop
-    </button> -->
+   <info-window id="foo-iw">
+    <div ng-non-bindable="">
+      Latitude: {{shop.position}}<br/>
+      Longitude 2: {{anchor.getPosition()}}<br/>
+      <md-button type="submit" class="md-raised md-primary" ng-click="clicked()">Check Runners</md-button>
+    </div>
+  </info-window>
+</ng-map>
 </div>
+<div ng-if="users" class='select_users' flex=20>
+  <md-content>
+      <md-list flex>
+        <md-list-item class="md-3-line" ng-repeat="user in users" ng-click="addUserToLocation($event, user)">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{user.first_name | uppercase}}  {{user.last_name | uppercase}}</h3>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

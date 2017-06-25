@@ -1,9 +1,11 @@
 <div>
-Hello add location Page
+  <section layout="row" layout-sm="column" layout-align="end right" layout-wrap>
+      <md-button class="md-raised md-warn" ng-href="#/participate">Pick a Location</md-button>
+      <md-button class="md-raised md-warn" ng-href="#/">Logout</md-button>
+  </section>
+  <h1 class="md-title">ADD A LOCATION </h1>
+  <div class="label">Please Mark a location and click submit to add</div>
 
-    {{latlng}}
-
-17.3850° N, 78.4867° E
     <ng-map id="map"
     center='current-position'
     geo-fallback-center="[17.385, 78.486]"
@@ -11,8 +13,14 @@ Hello add location Page
     zoom="10"
     >
     	<marker position="{{latlng}}" title="Hello World!" on-dragend="getpos($event)" 
-        animation="Animation.BOUNCE" animation="DROP" draggable="true"></marker>
+         draggable="true"></marker>
 
     </ng-map>
+    <form name="form" ng-submit="addLocation()">
+        <input type="hidden" name="langLat" ng-model="langLat" >
+        <div>
+            <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+        </div>
 
+    </form>
  </div>
