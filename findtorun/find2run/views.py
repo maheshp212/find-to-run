@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 from utilities.utils import get_request_info
 
-from find2run.models import User
+from find2run.models import User, Location
 
 logger = logging.getLogger(__name__)
 
@@ -40,8 +40,9 @@ def update_location(request):
     request_info = request.GET
     try:
         a_user = User.objects.get(email=request_info['email'])
-        a_user.lattitude = request_info['lattitude']
-        a_user.longitude = request_info['longitude']
+        Location(email=User.objects.get(email=request.GET['email']),
+                 lattitude=request_info['lattitude'],
+                 longitude=request_info['longitude']).save()
         a_user.save()
         return HttpResponse('Location updated')
     except Exception as e:

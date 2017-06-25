@@ -9,5 +9,9 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     city = models.CharField(max_length=50,
                             blank=True)
+
+
+class Location(models.Model):
+    email = models.ForeignKey(User)
     lattitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
